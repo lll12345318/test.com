@@ -1,0 +1,20 @@
+[build]
+  # The build command Netlify should run.
+  # For a standard React/Vite project, this is typically 'npm run build'.
+  command = "npm run build"
+  
+  # The directory containing the final compiled/built files (HTML, CSS, JS).
+  # Vite outputs its production files to the 'dist' folder.
+  publish = "dist"
+
+  # Sets the Node.js version for the build environment.
+  environment = { NODE_VERSION = "18" }
+
+
+# This section handles routing for Single Page Applications (SPAs) like React.
+# It ensures all paths/routes are redirected to index.html so React Router
+# can handle the navigation without Netlify returning a 404 error.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
