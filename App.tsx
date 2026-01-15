@@ -1,10 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import { exams, questions as allQuestions } from './data';
 import { Exam } from './types';
-import WelcomeScreen from './components/WelcomeScreen';
-import ExamScreen from './components/ExamScreen';
-import ResultsScreen from './components/ResultsScreen';
-import { BrainCircuitIcon } from './components/icons';
+import WelcomeScreen from ./components/welcomescreen';
+import ExamScreen from ./components/Examscreen';
+import ResultsScreen from ./components/ResultsScreen';
+import { BrainCircuitIcon } from ./components/icons';
 
 const App: React.FC = () => {
   const [appState, setAppState] = useState<'welcome' | 'exam' | 'results'>('welcome');
