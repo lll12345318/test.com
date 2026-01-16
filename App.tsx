@@ -1,9 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, Suspense } from 'react';
 import { exams, questions as allQuestions } from './data';
 import { Exam } from './types';
-import WelcomeScreen from './components/WelcomeScreen';
-import ExamScreen from './components/ExamScreen';
-import ResultsScreen from './components/ResultsScreen';
+const WelcomeScreen = React.lazy(() => import('./components/WelcomeScreen'));
+const ExamScreen = React.lazy(() => import('./components/ExamScreen'));
+const ResultsScreen = React.lazy(() => import('./components/ResultsScreen'));
 import { BrainCircuitIcon } from './components/icons';
 
 const App: React.FC = () => {
@@ -76,7 +76,9 @@ const App: React.FC = () => {
         </div>
       </header>
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-        {renderContent()}
+        <Suspense fallback={<div>Loading...</div>}>
+          {renderContent()}
+        </Suspense>
       </main>
       <footer className="bg-gray-200 text-center p-4 text-sm text-gray-600">
         <p>&copy; {new Date().getFullYear()} AI Exam Tutor. All rights reserved.</p>
